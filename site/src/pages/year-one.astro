@@ -2,6 +2,7 @@
 import Base from "../layouts/Base.astro";
 import StatusBadge from "../components/StatusBadge.astro";
 import { loadCommitments } from "../lib/commitments";
+import { withBase } from "../lib/url";
 
 const commitments = loadCommitments();
 const delivered = commitments.filter((c) => c.status === "delivered");
@@ -29,21 +30,21 @@ const noEvidence = commitments.filter((c) => c.status === "no_public_evidence");
   <h2>Delivered ({delivered.length})</h2>
   <ul>
     {delivered.map((c) => (
-      <li><a href={`/commitment/${c.id}/`}>{c.title}</a> <StatusBadge status={c.status} /></li>
+      <li><a href={withBase(`/commitment/${c.id}/`)}>{c.title}</a> <StatusBadge status={c.status} /></li>
     ))}
   </ul>
 
   <h2>In progress ({inProgress.length})</h2>
   <ul>
     {inProgress.map((c) => (
-      <li><a href={`/commitment/${c.id}/`}>{c.title}</a> <StatusBadge status={c.status} /></li>
+      <li><a href={withBase(`/commitment/${c.id}/`)}>{c.title}</a> <StatusBadge status={c.status} /></li>
     ))}
   </ul>
 
   <h2>No public evidence ({noEvidence.length})</h2>
   <ul>
     {noEvidence.map((c) => (
-      <li><a href={`/commitment/${c.id}/`}>{c.title}</a> <StatusBadge status={c.status} /></li>
+      <li><a href={withBase(`/commitment/${c.id}/`)}>{c.title}</a> <StatusBadge status={c.status} /></li>
     ))}
   </ul>
 </Base>

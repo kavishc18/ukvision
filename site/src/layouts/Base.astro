@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import { withBase } from "../lib/url";
 
 interface Props {
   title: string;
@@ -20,12 +21,12 @@ const { title, description = "An independent, evidence-linked tracker of India-U
   <body>
     <header class="site-header">
       <div class="site-header__inner">
-        <div class="site-title"><a href="/">Vision 2035 Tracker</a></div>
+        <div class="site-title"><a href={withBase("/")}>Vision 2035 Tracker</a></div>
         <nav class="site-nav">
-          <a href="/">Scorecard</a>
-          <a href="/briefs/">Briefs</a>
-          <a href="/year-one/">Year One</a>
-          <a href="/methodology/">Methodology</a>
+          <a href={withBase("/")}>Scorecard</a>
+          <a href={withBase("/briefs/")}>Briefs</a>
+          <a href={withBase("/year-one/")}>Year One</a>
+          <a href={withBase("/methodology/")}>Methodology</a>
         </nav>
       </div>
     </header>

@@ -2,6 +2,7 @@
 import Base from "../../layouts/Base.astro";
 import StatusBadge from "../../components/StatusBadge.astro";
 import { loadCommitments, getCommitment, PILLAR_LABELS } from "../../lib/commitments";
+import { withBase } from "../../lib/url";
 
 export function getStaticPaths() {
   return loadCommitments().map((c) => ({ params: { id: c.id } }));
@@ -15,7 +16,7 @@ const sortedEvidence = [...(c.evidence ?? [])].sort((a, b) => b.date.localeCompa
 ---
 
 <Base title={c.title} description={c.commitment_text}>
-  <p><a href="/">&larr; Back to scorecard</a></p>
+  <p><a href={withBase("/")}>&larr; Back to scorecard</a></p>
 
   <div class="commitment-header">
     <p class="pillar-tag">{PILLAR_LABELS[c.pillar]}</p>

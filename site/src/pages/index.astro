@@ -2,6 +2,7 @@
 import Base from "../layouts/Base.astro";
 import StatusBadge from "../components/StatusBadge.astro";
 import { loadCommitments, lastActivityDate, PILLAR_LABELS } from "../lib/commitments";
+import { withBase } from "../lib/url";
 
 const commitments = loadCommitments();
 
@@ -42,7 +43,7 @@ const counts = commitments.reduce(
     <tbody>
       {commitments.map((c) => (
         <tr>
-          <td><a href={`/commitment/${c.id}/`}>{c.title}</a></td>
+          <td><a href={withBase(`/commitment/${c.id}/`)}>{c.title}</a></td>
           <td class="pillar-tag">{PILLAR_LABELS[c.pillar]}</td>
           <td><StatusBadge status={c.status} /></td>
           <td>{c.evidence?.length ?? 0}</td>

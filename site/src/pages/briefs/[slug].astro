@@ -1,6 +1,7 @@
 ---
 import Base from "../../layouts/Base.astro";
 import { loadBriefs } from "../../lib/briefs";
+import { withBase } from "../../lib/url";
 import { marked } from "marked";
 
 export function getStaticPaths() {
@@ -12,6 +13,6 @@ const html = marked.parse(brief.body);
 ---
 
 <Base title={brief.title}>
-  <p><a href="/briefs/">&larr; All briefs</a></p>
+  <p><a href={withBase("/briefs/")}>&larr; All briefs</a></p>
   <div class="brief-body" set:html={html} />
 </Base>

@@ -1,6 +1,7 @@
 ---
 import Base from "../../layouts/Base.astro";
 import { loadBriefs } from "../../lib/briefs";
+import { withBase } from "../../lib/url";
 
 const briefs = loadBriefs();
 ---
@@ -14,7 +15,7 @@ const briefs = loadBriefs();
   ) : (
     <ul class="brief-list">
       {briefs.map((b) => (
-        <li><a href={`/briefs/${b.slug}/`}>{b.title}</a></li>
+        <li><a href={withBase(`/briefs/${b.slug}/`)}>{b.title}</a></li>
       ))}
     </ul>
   )}
