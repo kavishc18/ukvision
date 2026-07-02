@@ -1,0 +1,24 @@
+id: v2035-tech-010
+pillar: technology
+title: "Open-source AI collaboration"
+commitment_text: >
+  Collaborate to create open-source AI solutions that may be leveraged
+  by UK and India businesses.
+source_url: https://www.gov.uk/government/publications/india-uk-vision-2035/india-uk-vision-2035
+announced: 2025-07-24
+owners: [DSIT, MeitY]
+status: no_public_evidence
+status_rationale: >
+  No public activity — funded projects, published tools, or joint
+  announcements — has been identified since this commitment was made in
+  Vision 2035.
+evidence:
+  - date: 2025-07-24
+    url: https://www.gov.uk/government/publications/india-uk-vision-2035/india-uk-vision-2035
+    source_type: gov_uk
+    summary: "Vision 2035 committed both governments to collaborate on open-source AI solutions that UK and India businesses could leverage."
+suggested_pq: >
+  To ask His Majesty's Government what open-source AI collaboration
+  with India has taken place since the Vision 2035 commitment was made,
+  and what outputs, if any, have been published.
+last_reviewed: 2026-07-03

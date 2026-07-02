@@ -1,0 +1,31 @@
+id: v2035-tech-004
+pillar: technology
+title: "TSI workstream: Critical Minerals Supply Chain Observatory"
+commitment_text: >
+  Build joint digital data infrastructure on the critical minerals
+  value chain, and establish related research and training capacity,
+  as a Technology Security Initiative workstream.
+source_url: https://www.gov.uk/government/news/uk-india-technology-security-initiative-anniversary-statement
+announced: 2024-07-24
+owners: [DSIT, Ministry of Mines (India)]
+status: in_progress
+status_rationale: >
+  Minister Kanishka Narayan confirmed in the 28 Apr 2026 Westminster
+  Hall debate that Phase 2 of the joint Critical Minerals Supply Chain
+  Observatory is backed by £1.8m in funding and will establish a
+  satellite campus at the Indian School of Mines, Dhanbad.
+evidence:
+  - date: 2025-07-24
+    url: https://www.gov.uk/government/news/uk-india-technology-security-initiative-anniversary-statement
+    source_type: gov_uk
+    summary: "£1.8 million in new funding was announced for Phase Two of the joint Critical Minerals Supply Chain Observatory."
+  - date: 2026-04-28
+    url: https://hansard.parliament.uk/commons/2026-04-28/debates/272F75BF-4C9D-495E-9B57-D25F07E015EE/UK-IndiaTechnologySecurityInitiative
+    source_type: hansard
+    summary: "Minister Kanishka Narayan told the Commons Phase 2 of the observatory, backed by £1.8 million, will extend the joint digital data infrastructure on the critical minerals value chain and establish a satellite campus at the Indian School of Mines, Dhanbad."
+suggested_pq: >
+  To ask His Majesty's Government when the satellite campus of the
+  Indian School of Mines, Dhanbad, funded under the Critical Minerals
+  Supply Chain Observatory Phase 2, is expected to open, and what data
+  the Observatory has published to date.
+last_reviewed: 2026-07-03

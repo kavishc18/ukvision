@@ -1,0 +1,31 @@
+id: v2035-tech-007
+pillar: technology
+title: "TSI workstream: Biotechnology & Healthtech"
+commitment_text: >
+  Unlock the potential of biomanufacturing, bio-based materials and
+  advanced biosciences, including a future UK-India Biotechnology
+  Accelerator, as a Technology Security Initiative workstream.
+source_url: https://www.gov.uk/government/publications/india-uk-vision-2035/india-uk-vision-2035
+announced: 2025-07-24
+owners: [DSIT, DBT (India), NIHR]
+status: in_progress
+status_rationale: >
+  A letter of intent exists between the UK's National Institute for
+  Health and Care Research (NIHR) and India's Department of
+  Biotechnology (DBT) under the FEMTECH partnership. The Biotechnology
+  Accelerator itself remains a stated future plan with no published
+  launch date or funding.
+evidence:
+  - date: 2025-07-24
+    url: https://www.gov.uk/government/news/uk-india-technology-security-initiative-anniversary-statement
+    source_type: gov_uk
+    summary: "The FEMTECH partnership between NIHR and DBT was strengthened, and a future UK-India Biotechnology Accelerator was proposed to support biofoundries and advanced biosciences."
+  - date: 2026-04-28
+    url: https://theprint.in/world/india-uk-tech-partnership-will-secure-supply-chains-uk-parliament-told/2918837/
+    source_type: press
+    summary: "Coverage of the Westminster Hall debate confirmed a letter of intent exists between NIHR and DBT to advance femtech innovations."
+suggested_pq: >
+  To ask His Majesty's Government what progress has been made on the
+  proposed UK-India Biotechnology Accelerator, and when its funding and
+  launch date will be confirmed.
+last_reviewed: 2026-07-03

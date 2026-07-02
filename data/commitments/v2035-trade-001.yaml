@@ -1,0 +1,30 @@
+id: v2035-trade-001
+pillar: trade_digital
+title: "CETA entry into force"
+commitment_text: >
+  Sign and ratify the India-UK Comprehensive Economic and Trade
+  Agreement (CETA), eliminating tariffs on the large majority of goods
+  and opening services market access.
+source_url: https://www.gov.uk/government/publications/india-uk-vision-2035/india-uk-vision-2035
+announced: 2025-07-24
+owners: [DBT (UK), Ministry of Commerce and Industry (India)]
+status: delivered
+status_rationale: >
+  CETA was signed in London on 24 July 2025 and completed domestic
+  ratification procedures in both countries, entering into force on
+  15 July 2026 alongside the Double Contribution Convention
+  ([[v2035-trade-002]]).
+evidence:
+  - date: 2025-07-24
+    url: https://www.gov.uk/government/publications/india-uk-vision-2035/india-uk-vision-2035
+    source_type: gov_uk
+    summary: "The India-UK Comprehensive Economic and Trade Agreement was signed in London on 24 July 2025."
+  - date: 2026-06-18
+    url: https://www.pib.gov.in/PressReleasePage.aspx?PRID=2274280&reg=48&lang=2
+    source_type: pib
+    summary: "CETA and the Agreement on Social Security Contributions were confirmed to enter into force on 15 July 2026, having completed domestic ratification procedures in both countries."
+suggested_pq: >
+  To ask His Majesty's Government what assessment it has made of the
+  impact of CETA on UK exports to India in its first quarter of
+  operation.
+last_reviewed: 2026-07-03

@@ -1,0 +1,52 @@
+name: Weekly ingest
+
+on:
+  schedule:
+    # Sunday 22:00 UTC
+    - cron: "0 22 * * 0"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  ingest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r pipeline/requirements.txt
+
+      - name: Fetch candidate evidence
+        run: python -m pipeline.fetch
+        working-directory: .
+
+      - name: Stage 1 — relevance filter
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+        run: python -m pipeline.filter
+
+      - name: Stage 2 — classify and propose evidence
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+        run: python -m pipeline.classify
+
+      - name: Open pull request with proposed evidence
+        uses: peter-evans/create-pull-request@v6
+        with:
+          commit-message: "chore(evidence): weekly ingest proposals"
+          title: "Weekly evidence proposals — ${{ github.run_id }}"
+          body: |
+            Automated evidence proposals from the weekly ingest pipeline.
+
+            **Do not merge without review.** Every appended evidence entry
+            and any `pending_status_suggestion` block must be checked
+            against its source before merging — see docs/methodology.md.
+          branch: weekly-ingest/${{ github.run_id }}
+          add-paths: data/commitments/*.yaml

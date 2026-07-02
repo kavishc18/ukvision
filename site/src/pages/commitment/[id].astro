@@ -1,0 +1,58 @@
+---
+import Base from "../../layouts/Base.astro";
+import StatusBadge from "../../components/StatusBadge.astro";
+import { loadCommitments, getCommitment, PILLAR_LABELS } from "../../lib/commitments";
+
+export function getStaticPaths() {
+  return loadCommitments().map((c) => ({ params: { id: c.id } }));
+}
+
+const { id } = Astro.params;
+const c = getCommitment(id as string);
+if (!c) throw new Error(`Commitment not found: ${id}`);
+
+const sortedEvidence = [...(c.evidence ?? [])].sort((a, b) => b.date.localeCompare(a.date));
+---
+
+<Base title={c.title} description={c.commitment_text}>
+  <p><a href="/">&larr; Back to scorecard</a></p>
+
+  <div class="commitment-header">
+    <p class="pillar-tag">{PILLAR_LABELS[c.pillar]}</p>
+    <h1>{c.title}</h1>
+    <p><StatusBadge status={c.status} /></p>
+    <p class="commitment-meta">
+      Announced {c.announced} · Owners: {c.owners?.join(", ")} · Last reviewed {c.last_reviewed}
+    </p>
+  </div>
+
+  <p>{c.commitment_text}</p>
+  <p><a href={c.source_url} target="_blank" rel="noopener">Original source &rarr;</a></p>
+
+  <div class="rationale-box">
+    <strong>Status rationale.</strong> {c.status_rationale}
+  </div>
+
+  <h2>Evidence timeline</h2>
+  {sortedEvidence.length === 0 ? (
+    <p>No evidence recorded since the original announcement.</p>
+  ) : (
+    <ul class="timeline">
+      {sortedEvidence.map((e) => (
+        <li>
+          <span class="evidence-date">{e.date}</span>
+          <span class="evidence-source">{e.source_type.replace("_", " ")}</span>
+          <p>{e.summary}</p>
+          <a href={e.url} target="_blank" rel="noopener">Source &rarr;</a>
+        </li>
+      ))}
+    </ul>
+  )}
+
+  {c.suggested_pq && (
+    <>
+      <h2>Suggested parliamentary question</h2>
+      <div class="pq-box">{c.suggested_pq}</div>
+    </>
+  )}
+</Base>

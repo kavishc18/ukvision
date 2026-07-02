@@ -1,0 +1,31 @@
+id: v2035-trade-003
+pillar: trade_digital
+title: "Bilateral Investment Treaty negotiation"
+commitment_text: >
+  Work towards early conclusion of a UK-India Bilateral Investment
+  Treaty (BIT) to provide enhanced investor protections alongside CETA.
+source_url: https://www.gov.uk/government/publications/india-uk-vision-2035/india-uk-vision-2035
+announced: 2025-07-24
+owners: [DBT (UK), Ministry of Finance (India)]
+status: announced_only
+status_rationale: >
+  Industry and parliamentary commentary through mid-2026 reported that
+  BIT negotiations had not been concluded, citing unresolved
+  differences over tax carve-outs and most-favoured-nation status. The
+  UK Parliament's BEIS Committee noted enhanced investor protection
+  "remains an ambition rather than a secured outcome." No agreed text or
+  signing date has been published.
+evidence:
+  - date: 2026-06-26
+    url: https://researchbriefings.files.parliament.uk/documents/CBP-10258/CBP-10258.pdf
+    source_type: other
+    summary: "A House of Commons Library briefing on the UK-India CETA noted the FTA does not include an investment chapter and no standalone bilateral investment treaty has been agreed, with Parliament calling for further negotiation."
+  - date: 2026-06-01
+    url: https://www.outlookbusiness.com/economy-and-policy/whats-holding-back-india-uk-investment-treaty-despite-fta-push
+    source_type: press
+    summary: "Legal and industry commentary reported UK-India bilateral investment treaty talks had not progressed to conclusion, citing unresolved differences over tax carve-outs and most-favoured-nation status."
+suggested_pq: >
+  To ask His Majesty's Government what the current status is of
+  negotiations on a UK-India Bilateral Investment Treaty, and what the
+  remaining obstacles to conclusion are.
+last_reviewed: 2026-07-03

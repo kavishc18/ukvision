@@ -1,0 +1,41 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "An independent, evidence-linked tracker of India-UK Vision 2035 technology, trade and education commitments." } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title} · Vision 2035 Tracker</title>
+    <meta name="description" content={description} />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="site-header__inner">
+        <div class="site-title"><a href="/">Vision 2035 Tracker</a></div>
+        <nav class="site-nav">
+          <a href="/">Scorecard</a>
+          <a href="/briefs/">Briefs</a>
+          <a href="/year-one/">Year One</a>
+          <a href="/methodology/">Methodology</a>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <slot />
+    </main>
+    <footer class="site-footer">
+      An independent tracker. Not affiliated with the UK or Indian governments.
+      All statuses reflect publicly available evidence. Corrections:
+      <a href="mailto:corrections@example.org">corrections@example.org</a>
+    </footer>
+  </body>
+</html>

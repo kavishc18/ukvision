@@ -1,0 +1,32 @@
+id: v2035-edu-001
+pillar: education_tech
+title: "UK university branch campuses in India"
+commitment_text: >
+  Encourage the opening of international branch campuses of leading UK
+  universities in India.
+source_url: https://www.gov.uk/government/publications/india-uk-vision-2035/india-uk-vision-2035
+announced: 2025-07-24
+owners: [DfE, UGC (India)]
+status: in_progress
+status_rationale: >
+  Nine UK universities have approval to open branch campuses in India
+  (confirmed 28 Jan 2026): Southampton, Queen's Belfast, Bristol, York,
+  Liverpool, Aberdeen, Surrey, Lancaster and Birkbeck. Southampton and
+  Queen's Belfast are open and teaching; Liverpool (Bangalore) and
+  Bristol (Mumbai) are due to open from August/Summer 2026. Evidence is
+  tracked per campus.
+evidence:
+  - date: 2026-01-28
+    url: https://www.gov.uk/government/publications/india-uk-vision-2035/india-uk-vision-2035
+    source_type: gov_uk
+    summary: "Official approval was confirmed for nine UK universities — Southampton, Queen's Belfast, Bristol, York, Liverpool, Aberdeen, Surrey, Lancaster and Birkbeck — to establish branch campuses in India."
+  - date: 2026-06-01
+    url: https://collegeadmissions.goalisb.com/post/uk-universities-india-campus
+    source_type: press
+    summary: "University of Liverpool's Bangalore campus is scheduled to begin academic sessions from August 2026; University of Bristol's Mumbai 'Enterprise Campus' is scheduled to launch Summer 2026."
+suggested_pq: >
+  To ask His Majesty's Government how many students are currently
+  enrolled across UK university branch campuses in India, broken down
+  by institution, and what oversight arrangements are in place for
+  academic quality.
+last_reviewed: 2026-07-03

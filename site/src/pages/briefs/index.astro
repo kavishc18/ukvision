@@ -1,0 +1,21 @@
+---
+import Base from "../../layouts/Base.astro";
+import { loadBriefs } from "../../lib/briefs";
+
+const briefs = loadBriefs();
+---
+
+<Base title="Monthly Briefs">
+  <h1>Monthly Briefs</h1>
+  <p class="strapline">What moved each month, what has no public evidence, and suggested parliamentary questions.</p>
+
+  {briefs.length === 0 ? (
+    <p>No briefs published yet. Check back after the first monthly cycle.</p>
+  ) : (
+    <ul class="brief-list">
+      {briefs.map((b) => (
+        <li><a href={`/briefs/${b.slug}/`}>{b.title}</a></li>
+      ))}
+    </ul>
+  )}
+</Base>

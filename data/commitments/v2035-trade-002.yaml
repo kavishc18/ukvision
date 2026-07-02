@@ -1,0 +1,30 @@
+id: v2035-trade-002
+pillar: trade_digital
+title: "Double Contribution Convention"
+commitment_text: >
+  Negotiate and sign a social security agreement (Double Contribution
+  Convention) so that workers on temporary assignment do not pay social
+  security contributions in both countries.
+source_url: https://www.gov.uk/government/publications/india-uk-vision-2035/india-uk-vision-2035
+announced: 2025-07-24
+owners: [HMRC/DWP (UK), Ministry of Labour and Employment (India)]
+status: delivered
+status_rationale: >
+  The Double Contribution Convention was signed on 10 February 2026 and
+  entered into force on 15 July 2026 alongside CETA, extending the
+  exemption period for dual social security contributions from three to
+  five years.
+evidence:
+  - date: 2026-02-10
+    url: https://www.pib.gov.in/PressReleasePage.aspx?PRID=2274280&reg=48&lang=2
+    source_type: pib
+    summary: "The Double Contribution Convention was signed on 10 February 2026."
+  - date: 2026-07-15
+    url: https://www.pib.gov.in/PressReleasePage.aspx?PRID=2274280&reg=48&lang=2
+    source_type: pib
+    summary: "The Double Contribution Convention entered into force on 15 July 2026 alongside CETA, extending the exemption period for dual social security contributions for Indian professionals on temporary UK assignments from three years to five years."
+suggested_pq: >
+  To ask His Majesty's Government how many UK and Indian workers it
+  estimates will benefit from the Double Contribution Convention in its
+  first year of operation.
+last_reviewed: 2026-07-03

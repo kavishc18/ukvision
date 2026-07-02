@@ -1,0 +1,27 @@
+id: v2035-tech-003
+pillar: technology
+title: "TSI workstream: Future Telecoms"
+commitment_text: >
+  Advance next-generation, secure-by-design telecommunications through
+  joint research, development and innovation, including Open RAN and
+  6G-relevant testbeds, as a Technology Security Initiative workstream.
+source_url: https://www.gov.uk/government/news/uk-india-technology-security-initiative-anniversary-statement
+announced: 2024-07-24
+owners: [DSIT, DoT (India), UKRI, C-DOT]
+status: in_progress
+status_rationale: >
+  A £7m joint Future Telecoms research programme was funded in 2024,
+  and India's C-DOT and the UK's SONIC testbed facility formalised
+  collaboration. This work now sits under the India-UK Connectivity and
+  Innovation Centre (tracked separately, [[v2035-tech-009]]).
+evidence:
+  - date: 2024-07-24
+    url: https://www.gov.uk/government/news/uk-india-technology-security-initiative-anniversary-statement
+    source_type: gov_uk
+    summary: "A £7 million joint research programme on Future Telecoms was funded in 2024, supporting Open RAN and testbed development, alongside formalised collaboration between India's C-DOT and the UK's SONIC facility."
+suggested_pq: >
+  To ask His Majesty's Government what outputs the 2024 £7 million joint
+  Future Telecoms research programme with India has produced, and how
+  this work has been folded into the India-UK Connectivity and
+  Innovation Centre.
+last_reviewed: 2026-07-03

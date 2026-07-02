@@ -1,0 +1,25 @@
+id: v2035-tech-005
+pillar: technology
+title: "TSI workstream: Semiconductors"
+commitment_text: >
+  Lay the groundwork for future UK-India collaboration on
+  semiconductors as part of the Technology Security Initiative.
+source_url: https://www.gov.uk/government/publications/india-uk-vision-2035/india-uk-vision-2035
+announced: 2025-07-24
+owners: [DSIT, MeitY]
+status: announced_only
+status_rationale: >
+  Vision 2035 and the TSI factsheet list semiconductors as a workstream.
+  Neither the July 2025 TSI anniversary statement nor the April 2026
+  Westminster Hall debate reported specific semiconductor projects,
+  funding or milestones.
+evidence:
+  - date: 2025-07-24
+    url: https://www.gov.uk/government/publications/india-uk-vision-2035/india-uk-vision-2035
+    source_type: gov_uk
+    summary: "Vision 2035 names semiconductors as a field for TSI-driven innovation-led growth, alongside quantum, advanced materials and cyber security."
+suggested_pq: >
+  To ask His Majesty's Government what specific semiconductor
+  collaboration activity has taken place under the Technology Security
+  Initiative since it was agreed in July 2024.
+last_reviewed: 2026-07-03

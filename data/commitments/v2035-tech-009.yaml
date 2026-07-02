@@ -1,0 +1,33 @@
+id: v2035-tech-009
+pillar: technology
+title: "India-UK Connectivity and Innovation Centre"
+commitment_text: >
+  Establish an India-UK Connectivity and Innovation Centre, jointly
+  funded, to drive digital inclusion and next-generation telecoms
+  innovation — AI in telecoms, non-terrestrial networks, and telecoms
+  cybersecurity.
+source_url: https://www.gov.uk/government/publications/india-uk-connectivity-and-innovation-centre
+announced: 2025-07-24
+owners: [UKRI, DoT (India)]
+status: delivered
+status_rationale: >
+  The Centre was formally launched in October 2025 with an initial £24m
+  in joint funding over four years, delivered jointly by UKRI and
+  India's Department of Telecommunications. Minister Kanishka Narayan
+  confirmed in April 2026 that it is now driving work on AI in telecoms
+  and non-terrestrial networks.
+evidence:
+  - date: 2025-10-01
+    url: https://www.gov.uk/government/publications/india-uk-connectivity-and-innovation-centre
+    source_type: gov_uk
+    summary: "India and the UK launched the India-UK Connectivity and Innovation Centre, jointly funded with an initial £24 million over four years, delivered by UKRI and India's Department of Telecommunications, focused on AI in telecoms, non-terrestrial networks, and telecoms cybersecurity."
+  - date: 2026-04-28
+    url: https://hansard.parliament.uk/commons/2026-04-28/debates/272F75BF-4C9D-495E-9B57-D25F07E015EE/UK-IndiaTechnologySecurityInitiative
+    source_type: hansard
+    summary: "Minister Kanishka Narayan told the Commons the Centre, backed by £24 million in joint funding, is driving innovation in AI-managed telecoms networks and non-terrestrial networks such as satellite internet."
+suggested_pq: >
+  To ask His Majesty's Government what projects the India-UK
+  Connectivity and Innovation Centre has funded since its October 2025
+  launch, and what results have been achieved against its three
+  priority areas.
+last_reviewed: 2026-07-03

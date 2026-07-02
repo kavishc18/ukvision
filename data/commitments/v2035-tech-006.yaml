@@ -1,0 +1,25 @@
+id: v2035-tech-006
+pillar: technology
+title: "TSI workstream: Quantum"
+commitment_text: >
+  Lay the groundwork for future UK-India collaboration on quantum
+  technologies as part of the Technology Security Initiative.
+source_url: https://www.gov.uk/government/publications/india-uk-vision-2035/india-uk-vision-2035
+announced: 2025-07-24
+owners: [DSIT, MeitY]
+status: announced_only
+status_rationale: >
+  Vision 2035 and the TSI factsheet list quantum as a workstream.
+  Neither the July 2025 anniversary statement nor the April 2026
+  Westminster Hall debate reported specific quantum projects, funding
+  or milestones.
+evidence:
+  - date: 2025-07-24
+    url: https://www.gov.uk/government/publications/india-uk-vision-2035/india-uk-vision-2035
+    source_type: gov_uk
+    summary: "Vision 2035 names quantum as a field for TSI-driven innovation-led growth, alongside semiconductors, advanced materials and cyber security."
+suggested_pq: >
+  To ask His Majesty's Government what specific quantum technology
+  collaboration activity has taken place under the Technology Security
+  Initiative since it was agreed in July 2024.
+last_reviewed: 2026-07-03

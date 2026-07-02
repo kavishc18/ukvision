@@ -1,0 +1,32 @@
+id: v2035-tech-002
+pillar: technology
+title: "Technology Security Initiative — next phase"
+commitment_text: >
+  Agree and launch a next phase of the UK-India Technology Security
+  Initiative, building on the initial workstreams agreed in July 2024
+  and renewed under Vision 2035.
+source_url: https://www.gov.uk/government/news/uk-india-technology-security-initiative-anniversary-statement
+announced: 2025-07-24
+owners: [DSIT, National Security Adviser (UK), MeitY, NSA (India)]
+status: in_progress
+status_rationale: >
+  UK National Security Adviser Jonathan Powell visited Delhi to discuss
+  a next phase of the TSI with India's NSA Ajit Doval; the two later met
+  again in London (30 Jun-1 Jul 2026) at the annual India-UK Strategic
+  Dialogue and reviewed the TSI. No published document sets out next-phase
+  scope, funding or timelines.
+evidence:
+  - date: 2026-04-28
+    url: https://www.etvbharat.com/amp/en/international/india-uk-tech-partnership-will-secure-supply-chains-uk-parliament-told-enn26043006506
+    source_type: press
+    summary: "Reporting on the Westminster Hall debate noted UK NSA Jonathan Powell had visited Delhi to discuss the next phase of the TSI with India's NSA Ajit Doval."
+  - date: 2026-07-01
+    url: https://www.mea.gov.in/newsdetail1.htm?14331%2F=
+    source_type: mea
+    summary: "India's NSA Ajit Doval met UK NSA Jonathan Powell in London for the annual India-UK Strategic Dialogue and reviewed the Technology Security Initiative."
+suggested_pq: >
+  To ask His Majesty's Government what the agreed scope, budget and
+  timeline are for the next phase of the UK-India Technology Security
+  Initiative discussed between the National Security Advisers, and when
+  this will be published.
+last_reviewed: 2026-07-03

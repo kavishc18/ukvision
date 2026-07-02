@@ -1,0 +1,26 @@
+id: v2035-edu-004
+pillar: education_tech
+title: "Review of mutually recognised qualifications"
+commitment_text: >
+  Review mutually recognised qualifications between the UK and India.
+source_url: https://www.gov.uk/government/publications/india-uk-vision-2035/india-uk-vision-2035
+announced: 2025-07-24
+owners: [DfE, UGC (India)]
+status: no_public_evidence
+status_rationale: >
+  No public record of a published review or outcome on mutual
+  recognition of qualifications has been identified since this
+  commitment was made. (The 2022 UK-India Mutual Recognition of
+  Qualifications agreement predates Vision 2035 and is a separate,
+  already-delivered instrument — this entry tracks the Vision 2035
+  commitment to review it.)
+evidence:
+  - date: 2025-07-24
+    url: https://www.gov.uk/government/publications/india-uk-vision-2035/india-uk-vision-2035
+    source_type: gov_uk
+    summary: "Vision 2035 committed both governments to review mutually recognised qualifications."
+suggested_pq: >
+  To ask His Majesty's Government what the outcome has been of the
+  review of mutually recognised UK-India qualifications committed to
+  under Vision 2035.
+last_reviewed: 2026-07-03

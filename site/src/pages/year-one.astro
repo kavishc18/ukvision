@@ -1,0 +1,49 @@
+---
+import Base from "../layouts/Base.astro";
+import StatusBadge from "../components/StatusBadge.astro";
+import { loadCommitments } from "../lib/commitments";
+
+const commitments = loadCommitments();
+const delivered = commitments.filter((c) => c.status === "delivered");
+const inProgress = commitments.filter((c) => c.status === "in_progress");
+const noEvidence = commitments.filter((c) => c.status === "no_public_evidence");
+---
+
+<Base title="Year One Scorecard" description="One year of India-UK Vision 2035: what's been delivered on technology, trade and education.">
+  <h1>One Year of Vision 2035: What's Been Delivered</h1>
+  <p class="strapline">
+    Published to mark the first anniversary of the India-UK Vision 2035
+    framework and the signing of CETA, 24 July 2025 &ndash; 24 July 2026.
+  </p>
+
+  <p>
+    <em>
+      This report is in draft. Replace this paragraph and the sections below
+      with the hand-written, human-voiced Year One Scorecard narrative before
+      publishing — see the build spec, day 5. The tables below pull live from
+      the tracked commitments so the underlying facts stay in sync with the
+      scorecard.
+    </em>
+  </p>
+
+  <h2>Delivered ({delivered.length})</h2>
+  <ul>
+    {delivered.map((c) => (
+      <li><a href={`/commitment/${c.id}/`}>{c.title}</a> <StatusBadge status={c.status} /></li>
+    ))}
+  </ul>
+
+  <h2>In progress ({inProgress.length})</h2>
+  <ul>
+    {inProgress.map((c) => (
+      <li><a href={`/commitment/${c.id}/`}>{c.title}</a> <StatusBadge status={c.status} /></li>
+    ))}
+  </ul>
+
+  <h2>No public evidence ({noEvidence.length})</h2>
+  <ul>
+    {noEvidence.map((c) => (
+      <li><a href={`/commitment/${c.id}/`}>{c.title}</a> <StatusBadge status={c.status} /></li>
+    ))}
+  </ul>
+</Base>

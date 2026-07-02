@@ -1,0 +1,32 @@
+id: v2035-tech-012
+pillar: technology
+title: "AI Impact Summit 2026 UK-India follow-through"
+commitment_text: >
+  UK engagement and delegation commitments at the India-hosted AI
+  Impact Summit 2026, and follow-up UK-India cooperation on inclusive,
+  responsible AI governance.
+source_url: https://impact.indiaai.gov.in/
+announced: 2026-02-16
+owners: [DSIT, MeitY]
+status: in_progress
+status_rationale: >
+  The UK was among 80+ countries endorsing the New Delhi Declaration at
+  the India AI Impact Summit 2026 (16-21 Feb 2026). A UK-India Policy
+  Exchange Roundtable on AI & technology cooperation (30 Jan 2026)
+  produced a joint techUK/UKAIBC outcome report. No UK government-side
+  delivery plan against Summit commitments has been published yet.
+evidence:
+  - date: 2026-01-30
+    url: https://www.techuk.org/resource/key-outcomes-from-the-2026-ai-impact-summit-with-techuk.html
+    source_type: press
+    summary: "A UK-India Policy Exchange Roundtable on AI & Technology Cooperation in New Delhi on 30 January 2026 brought together over 50 stakeholders from government, industry, academia and philanthropy, producing a joint techUK/UKAIBC outcome report."
+  - date: 2026-02-21
+    url: https://impact.indiaai.gov.in/
+    source_type: other
+    summary: "The UK endorsed the New Delhi Declaration at the India AI Impact Summit 2026, alongside more than 80 other countries."
+suggested_pq: >
+  To ask His Majesty's Government what steps it has taken to implement
+  the commitments it endorsed in the New Delhi Declaration at the India
+  AI Impact Summit 2026, and what UK-India AI governance cooperation has
+  followed since.
+last_reviewed: 2026-07-03

@@ -1,0 +1,11 @@
+---
+import { STATUS_LABELS, type Commitment } from "../lib/commitments";
+
+interface Props {
+  status: Commitment["status"];
+}
+
+const { status } = Astro.props;
+---
+
+<span class={`badge badge--${status}`}>{STATUS_LABELS[status]}</span>

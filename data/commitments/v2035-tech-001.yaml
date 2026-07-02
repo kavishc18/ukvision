@@ -1,0 +1,31 @@
+id: v2035-tech-001
+pillar: technology
+title: "UK-India Joint Centre for AI"
+commitment_text: >
+  Establish a joint centre to promote trusted, real-world AI innovation
+  and adoption in both countries, as part of the Technology Security
+  Initiative (TSI).
+source_url: https://www.gov.uk/government/publications/india-uk-vision-2035/india-uk-vision-2035
+announced: 2025-07-24
+owners: [DSIT, MeitY]
+status: in_progress
+status_rationale: >
+  Minister Kanishka Narayan told a Westminster Hall debate on the TSI
+  (28 Apr 2026) that the centre has delivered joint innovation projects
+  and is enabling safe AI adoption across other TSI sectors. No public
+  breakdown of project names, funding or outputs has been published.
+evidence:
+  - date: 2025-07-24
+    url: https://www.gov.uk/government/publications/india-uk-vision-2035/india-uk-vision-2035
+    source_type: gov_uk
+    summary: "Vision 2035 committed both governments to a UK-India joint centre for AI to promote trusted real-world AI innovation."
+  - date: 2026-04-28
+    url: https://hansard.parliament.uk/commons/2026-04-28/debates/272F75BF-4C9D-495E-9B57-D25F07E015EE/UK-IndiaTechnologySecurityInitiative
+    source_type: hansard
+    summary: "Minister Kanishka Narayan told the Commons the TSI has delivered several joint innovation projects through the UK-India Joint Centre for AI, which also supports safe AI adoption in other TSI sectors."
+suggested_pq: >
+  To ask His Majesty's Government what joint innovation projects have
+  been funded through the UK-India Joint Centre for AI to date, what
+  its budget is for 2026-27, and whether project-level outputs will be
+  published.
+last_reviewed: 2026-07-03

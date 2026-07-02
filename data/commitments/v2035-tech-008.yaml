@@ -1,0 +1,25 @@
+id: v2035-tech-008
+pillar: technology
+title: "TSI workstream: Advanced Materials"
+commitment_text: >
+  Collaborate on advanced materials, including graphene and 2D
+  materials technology, as part of the Technology Security Initiative.
+source_url: https://www.gov.uk/government/publications/india-uk-vision-2035/india-uk-vision-2035
+announced: 2025-07-24
+owners: [DSIT, MeitY]
+status: announced_only
+status_rationale: >
+  Ongoing collaboration on graphene and 2D materials technology is
+  referenced in TSI communications, but no specific projects, funding
+  figures or milestones have been published since the original
+  announcement.
+evidence:
+  - date: 2025-07-24
+    url: https://www.gov.uk/government/news/uk-india-technology-security-initiative-anniversary-statement
+    source_type: gov_uk
+    summary: "The TSI anniversary statement referenced ongoing collaboration on graphene and 2D materials technology as part of the advanced materials workstream."
+suggested_pq: >
+  To ask His Majesty's Government what funding has been committed to
+  UK-India graphene and 2D materials collaboration under the Technology
+  Security Initiative, and what it has delivered to date.
+last_reviewed: 2026-07-03
