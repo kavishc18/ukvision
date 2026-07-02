@@ -17,7 +17,7 @@ from pathlib import Path
 
 import yaml
 
-from groq_client import CLASSIFY_MODEL, chat_json
+from pipeline.groq_client import CLASSIFY_MODEL, chat_json
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 INBOX_DIR = REPO_ROOT / "data" / "inbox"

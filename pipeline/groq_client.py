@@ -1,8 +1,13 @@
 """Thin wrapper around the Groq OpenAI-compatible chat completions API.
 
-Model names rotate — check https://console.groq.com/docs/models before
-relying on the defaults below, and update FILTER_MODEL / CLASSIFY_MODEL
-here (one place) if they've been deprecated.
+Model names rotate — check https://console.groq.com/docs/models and
+https://console.groq.com/docs/deprecations before relying on the defaults
+below, and update FILTER_MODEL / CLASSIFY_MODEL / BRIEF_MODEL here (one
+place) if they've been deprecated.
+
+llama-3.1-8b-instant and llama-3.3-70b-versatile are deprecated on the
+free/developer tier (shutdown 2026-08-16); using their Groq-recommended
+openai/gpt-oss replacements instead.
 """
 from __future__ import annotations
 
@@ -14,9 +19,9 @@ import urllib.request
 
 GROQ_API_URL = "https://api.groq.com/openai/v1/chat/completions"
 
-FILTER_MODEL = "llama-3.1-8b-instant"
-CLASSIFY_MODEL = "llama-3.3-70b-versatile"
-BRIEF_MODEL = "llama-3.3-70b-versatile"
+FILTER_MODEL = "openai/gpt-oss-20b"
+CLASSIFY_MODEL = "openai/gpt-oss-120b"
+BRIEF_MODEL = "openai/gpt-oss-120b"
 
 
 class GroqError(RuntimeError):

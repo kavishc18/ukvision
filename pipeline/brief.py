@@ -14,7 +14,7 @@ from pathlib import Path
 
 import yaml
 
-from groq_client import BRIEF_MODEL, chat_json
+from pipeline.groq_client import BRIEF_MODEL, chat_json
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 COMMITMENTS_DIR = REPO_ROOT / "data" / "commitments"

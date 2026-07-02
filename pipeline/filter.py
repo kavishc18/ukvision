@@ -4,13 +4,14 @@ Reads the newest data/inbox/*.jsonl file, batches items 10 at a time,
 and writes only the ones the model marks relevant to
 data/inbox/relevant-YYYY-MM-DD.jsonl for classify.py to pick up.
 """
+
 from __future__ import annotations
 
 import json
 from datetime import datetime, timezone
 from pathlib import Path
 
-from groq_client import FILTER_MODEL, chat_json
+from pipeline.groq_client import FILTER_MODEL, chat_json
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 INBOX_DIR = REPO_ROOT / "data" / "inbox"
@@ -72,7 +73,9 @@ def main() -> None:
         for it in relevant:
             f.write(json.dumps(it) + "\n")
 
-    print(f"[filter] {len(relevant)}/{len(items)} items passed relevance filter -> {out_path}")
+    print(
+        f"[filter] {len(relevant)}/{len(items)} items passed relevance filter -> {out_path}"
+    )
 
 
 if __name__ == "__main__":
