@@ -8,6 +8,7 @@ data/inbox/relevant-YYYY-MM-DD.jsonl for classify.py to pick up.
 from __future__ import annotations
 
 import json
+import time
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -17,6 +18,7 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 INBOX_DIR = REPO_ROOT / "data" / "inbox"
 
 BATCH_SIZE = 10
+SLEEP_BETWEEN_BATCHES = 2.0  # be gentle on the free-tier TPM limit
 
 SYSTEM_PROMPT = """You are a relevance filter for a non-partisan policy \
 tracker monitoring delivery of the India-UK Vision 2035 agreement \
@@ -55,26 +57,46 @@ def main() -> None:
         print("[filter] inbox file empty")
         return
 
-    relevant: list[dict] = []
-    for batch in _batches(items, BATCH_SIZE):
-        numbered = "\n".join(
-            f"{i + 1}. {it['title']} — {it.get('snippet', '')[:200]}"
-            for i, it in enumerate(batch)
-        )
-        result = chat_json(FILTER_MODEL, SYSTEM_PROMPT, numbered)
-        flags = {r["index"]: r["relevant"] for r in result.get("results", [])}
-        for i, it in enumerate(batch):
-            if flags.get(i + 1):
-                relevant.append(it)
-
     today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     out_path = INBOX_DIR / f"relevant-{today}.jsonl"
-    with out_path.open("w") as f:
-        for it in relevant:
-            f.write(json.dumps(it) + "\n")
+
+    total_batches = (len(items) + BATCH_SIZE - 1) // BATCH_SIZE
+    relevant_count = 0
+    failed_batches = 0
+
+    # Stream to disk as we go and tolerate a single batch failing (e.g. a
+    # rate-limit wait that outlasts max_retries) rather than losing all
+    # prior progress — the weekly cron would otherwise throw away a mostly
+    # -successful run over one bad batch.
+    with out_path.open("w") as out_f:
+        for batch_num, batch in enumerate(_batches(items, BATCH_SIZE), start=1):
+            numbered = "\n".join(
+                f"{i + 1}. {it['title']} — {it.get('snippet', '')[:200]}"
+                for i, it in enumerate(batch)
+            )
+            try:
+                result = chat_json(FILTER_MODEL, SYSTEM_PROMPT, numbered)
+            except Exception as e:
+                failed_batches += 1
+                print(f"[filter] batch {batch_num}/{total_batches}: FAILED ({e})", flush=True)
+                continue
+
+            flags = {r["index"]: r["relevant"] for r in result.get("results", [])}
+            batch_relevant = 0
+            for i, it in enumerate(batch):
+                if flags.get(i + 1):
+                    out_f.write(json.dumps(it) + "\n")
+                    out_f.flush()
+                    batch_relevant += 1
+            relevant_count += batch_relevant
+            print(f"[filter] batch {batch_num}/{total_batches}: {batch_relevant}/{len(batch)} relevant", flush=True)
+
+            if batch_num < total_batches:
+                time.sleep(SLEEP_BETWEEN_BATCHES)
 
     print(
-        f"[filter] {len(relevant)}/{len(items)} items passed relevance filter -> {out_path}"
+        f"[filter] {relevant_count}/{len(items)} items passed relevance filter "
+        f"({failed_batches} batch(es) failed) -> {out_path}"
     )
 
 

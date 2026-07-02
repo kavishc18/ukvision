@@ -12,6 +12,7 @@ from __future__ import annotations
 import hashlib
 import json
 import os
+import time
 import urllib.parse
 import urllib.request
 from datetime import datetime, timedelta, timezone
@@ -101,6 +102,18 @@ def fetch_govuk(query: str) -> list[dict]:
     return items
 
 
+def _feed_entry_date(entry) -> str:
+    """feedparser exposes RFC822 dates ("Fri, 05 Jul 2026 12:34:56 GMT") in
+    `published`, but also parses them into `published_parsed` (a UTC
+    struct_time) when it can. Downstream code slices dates with [:10]
+    expecting YYYY-MM-DD, so normalize here rather than storing the raw
+    RFC822 string (which silently truncates to garbage like "Fri, 05 Ju")."""
+    parsed = getattr(entry, "published_parsed", None)
+    if parsed:
+        return time.strftime("%Y-%m-%d", parsed)
+    return entry.get("published", "")[:10]
+
+
 def fetch_google_news(query: str) -> list[dict]:
     url = "https://news.google.com/rss/search?" + urllib.parse.urlencode(
         {"q": query, "hl": "en-GB", "gl": "GB", "ceid": "GB:en"}
@@ -114,7 +127,7 @@ def fetch_google_news(query: str) -> list[dict]:
                 "url": entry.get("link", ""),
                 "title": entry.get("title", ""),
                 "snippet": entry.get("summary", ""),
-                "date": entry.get("published", ""),
+                "date": _feed_entry_date(entry),
                 "fetched_query": query,
             }
         )

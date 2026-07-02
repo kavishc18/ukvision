@@ -11,7 +11,9 @@ status changes take effect.
 """
 from __future__ import annotations
 
+import email.utils
 import json
+import time
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -24,6 +26,7 @@ INBOX_DIR = REPO_ROOT / "data" / "inbox"
 COMMITMENTS_DIR = REPO_ROOT / "data" / "commitments"
 
 MAX_ARTICLE_CHARS = 3000 * 4  # ~3k tokens
+SLEEP_BETWEEN_ITEMS = 1.5  # be gentle on the free-tier TPD limit
 
 SYSTEM_PROMPT_TEMPLATE = """You are a research assistant for a non-partisan \
 policy tracker monitoring delivery of the India-UK Vision 2035 agreement.
@@ -64,6 +67,38 @@ def _id_title_list(commitments: dict[str, dict]) -> str:
     return "\n".join(f"{cid}: {c['data']['title']}" for cid, c in sorted(commitments.items()))
 
 
+def _as_commitment_id(entry) -> str | None:
+    """The model is asked for plain ID strings but JSON mode doesn't
+    guarantee shape — tolerate {"id": "..."} / {"commitment_id": "..."}
+    objects instead of crashing the whole run on one malformed item."""
+    if isinstance(entry, str):
+        return entry
+    if isinstance(entry, dict):
+        for key in ("id", "commitment_id", "cid"):
+            if isinstance(entry.get(key), str):
+                return entry[key]
+    return None
+
+
+def _normalize_date(raw: str) -> str:
+    """Item dates arrive either already ISO (gov.uk) or RFC822 (Google
+    News RSS, e.g. "Fri, 05 Jul 2026 12:34:56 GMT"). A naive [:10] slice
+    silently mangles the RFC822 form into garbage like "Fri, 05 Ju" — parse
+    properly and fall back to today only if nothing usable is found."""
+    raw = (raw or "").strip()
+    if not raw:
+        return datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    if len(raw) >= 10 and raw[4] == "-" and raw[7] == "-":
+        return raw[:10]
+    try:
+        parsed = email.utils.parsedate_to_datetime(raw)
+        if parsed is not None:
+            return parsed.strftime("%Y-%m-%d")
+    except (TypeError, ValueError):
+        pass
+    return datetime.now(timezone.utc).strftime("%Y-%m-%d")
+
+
 def classify_item(item: dict, commitments: dict[str, dict]) -> dict:
     system_prompt = SYSTEM_PROMPT_TEMPLATE.format(id_title_list=_id_title_list(commitments))
     article_text = (item.get("snippet", "") or item.get("title", ""))[:MAX_ARTICLE_CHARS]
@@ -76,20 +111,27 @@ def classify_item(item: dict, commitments: dict[str, dict]) -> dict:
     return chat_json(CLASSIFY_MODEL, system_prompt, user_prompt)
 
 
-def append_evidence(commitment_path: Path, item: dict, result: dict) -> None:
+def append_evidence(commitment_path: Path, item: dict, result: dict) -> bool:
+    # A blank summary or missing URL is worse than no evidence at all —
+    # it would sit on the live site looking sourced when it isn't. Reject
+    # rather than write a placeholder a human reviewer has to catch later.
+    summary = (result.get("evidence_summary") or "").strip()
+    if not summary or not item.get("url"):
+        return False
+
     data = yaml.safe_load(commitment_path.read_text())
     data.setdefault("evidence", [])
 
     existing_urls = {e.get("url") for e in data["evidence"]}
     if item.get("url") in existing_urls:
-        return
+        return False
 
     data["evidence"].append(
         {
-            "date": item.get("date", "")[:10] or datetime.now(timezone.utc).strftime("%Y-%m-%d"),
+            "date": _normalize_date(item.get("date", "")),
             "url": item.get("url", ""),
             "source_type": item.get("source_type", "other"),
-            "summary": result.get("evidence_summary", ""),
+            "summary": summary,
         }
     )
 
@@ -103,6 +145,7 @@ def append_evidence(commitment_path: Path, item: dict, result: dict) -> None:
         }
 
     commitment_path.write_text(yaml.safe_dump(data, sort_keys=False, allow_unicode=True))
+    return True
 
 
 def main() -> None:
@@ -118,21 +161,41 @@ def main() -> None:
 
     commitments = _load_commitments()
     changed = 0
+    total = len(items)
 
-    for item in items:
+    for idx, item in enumerate(items, start=1):
         try:
             result = classify_item(item, commitments)
         except Exception as e:
-            print(f"[classify] failed on {item.get('url')}: {e}")
+            print(f"[classify] {idx}/{total}: FAILED ({e})", flush=True)
+            if idx < total:
+                time.sleep(SLEEP_BETWEEN_ITEMS)
             continue
 
-        for cid in result.get("matched_commitments", []):
-            if cid not in commitments:
-                continue
-            if not result.get("quote_free", True):
-                continue
-            append_evidence(commitments[cid]["path"], item, result)
-            changed += 1
+        raw_matched = result.get("matched_commitments", []) or []
+        matched = [_as_commitment_id(m) for m in raw_matched]
+        matched = [m for m in matched if m]
+
+        appended_here = 0
+        try:
+            for cid in matched:
+                if cid not in commitments:
+                    continue
+                if not result.get("quote_free", True):
+                    continue
+                if append_evidence(commitments[cid]["path"], item, result):
+                    changed += 1
+                    appended_here += 1
+        except Exception as e:
+            print(f"[classify] {idx}/{total}: FAILED while appending ({e})", flush=True)
+
+        if appended_here:
+            print(f"[classify] {idx}/{total}: matched {matched}", flush=True)
+        elif idx % 20 == 0:
+            print(f"[classify] {idx}/{total}: no match", flush=True)
+
+        if idx < total:
+            time.sleep(SLEEP_BETWEEN_ITEMS)
 
     print(f"[classify] appended {changed} evidence entries across commitment files")
 

@@ -13,6 +13,7 @@ from __future__ import annotations
 
 import json
 import os
+import re
 import time
 import urllib.error
 import urllib.request
@@ -38,11 +39,21 @@ def _api_key() -> str:
     return key
 
 
+_RETRY_AFTER_RE = re.compile(r"try again in ([\d.]+)s", re.IGNORECASE)
+
+
+def _retry_after_seconds(body_text: str) -> float | None:
+    """Parse Groq's 429 body (e.g. "...Please try again in 8.09s...") for
+    the exact wait it's asking for, so we don't guess with blind backoff."""
+    m = _RETRY_AFTER_RE.search(body_text)
+    return float(m.group(1)) if m else None
+
+
 def chat_json(
     model: str,
     system_prompt: str,
     user_prompt: str,
-    max_retries: int = 5,
+    max_retries: int = 8,
     temperature: float = 0.0,
 ) -> dict:
     """Call Groq chat completions with JSON mode, return the parsed JSON body."""
@@ -64,6 +75,9 @@ def chat_json(
         headers={
             "Authorization": f"Bearer {_api_key()}",
             "Content-Type": "application/json",
+            # Groq's API sits behind Cloudflare, which blocks the default
+            # "Python-urllib/x.y" user agent with a 403 (error code 1010).
+            "User-Agent": "vision2035-tracker-pipeline/1.0",
         },
         method="POST",
     )
@@ -76,11 +90,15 @@ def chat_json(
                 content = payload["choices"][0]["message"]["content"]
                 return json.loads(content)
         except urllib.error.HTTPError as e:
+            body_text = e.read().decode(errors="replace")
             if e.code == 429 and attempt < max_retries - 1:
-                time.sleep(delay)
+                wait = _retry_after_seconds(body_text)
+                # Groq's quoted wait is the minimum; pad it so we don't
+                # immediately re-trip the same rolling-window limit.
+                time.sleep(wait + 1.0 if wait is not None else delay)
                 delay *= 2
                 continue
-            raise GroqError(f"Groq API error {e.code}: {e.read().decode(errors='replace')}") from e
+            raise GroqError(f"Groq API error {e.code}: {body_text}") from e
         except urllib.error.URLError as e:
             if attempt < max_retries - 1:
                 time.sleep(delay)
